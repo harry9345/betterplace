@@ -43,9 +43,14 @@ Take a look at the component `PaypalButton`, located in `/src/PaypalButton.js`.
 
 1. Take a look at the component PaypalButton, located in /src/PaypalButton.js.
 2. What issues with it can you spot?
+
    _Answer_:
 
-   ```txt
+   ```
+   As I didn't have any experience with Paypal and Formik library, I spend a lots of time reading paypal and formik docs. to first understand what is happening in general.
+   The issue is that you have create an infinit loop inside the sleepUntilSubmitted function, on line 31.
+   I also notice that a issue inside the index.js, on submiteHandler function, which a setTimeout Inside.
+   So to solve the problem, the submitHandler function in index,js should return a promise which would will include the SetTimeout inside, resolve,reject,then and a catch block.
 
    ```
 
@@ -55,3 +60,7 @@ Take a look at the component `PaypalButton`, located in `/src/PaypalButton.js`.
 Note: The component uses [PayPal SDK](https://developer.paypal.com/docs/business/javascript-sdk/javascript-sdk-reference/). Keep in mind that due to the mock returning a fake value `onAccept` will never be executed in this demo and the expected result is the SDK failing with `500` while trying to call `https://www.sandbox.paypal.com/smart/api/payment/fake_paypal_token/ectoken`
 
 The component also utilises [formik](https://formik.org/) as form/state management library.
+
+```
+
+```
